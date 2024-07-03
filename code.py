@@ -1,19 +1,18 @@
 import random
+
 from hangman_words import word_list # import the word_list from hangman_words.py 
-from hangman_art import logo, stages # import the logo and stages images from hangman_art.py
 
-end_of_game = False
-
-print(logo)
 chosen_word = random.choice(word_list) #This line selects a random word from the word_list
 word_length = len(chosen_word) #This line calculates the length of the chosen word and stores it in the variable word_length.
 
-#TODO-1: - Create a variable called 'lives' to keep track of the number of lives left. 
-#Set 'lives' to equal 6.
+end_of_game = False
 lives = 6 #set number of lives at the start of the game
 
+from hangman_art import logo
+print(logo)
+
 #Testing code
-print(f'Pssst, the solution is {chosen_word}.') # this is to test our code 
+# print(f'Pssst, the solution is {chosen_word}.') # this is to test our code 
 
 #Create blanks
 display = [] #create list name display
@@ -36,7 +35,7 @@ while not end_of_game: #creating a condition: until the game is not finished, do
 
     #If lives goes down to 0 then the game should stop and it should print "You lose."
     if guess not in chosen_word: 
-        print(f"You guessed {guess}, that is not in the word. You lose a life.)
+        print(f"You guessed {guess}, that is not in the word. You lose a life.")
         lives -= 1 # if the guessed letter is not in the choosen word, reduce lives of 1. 
         if lives == 0: # if lives = 0, the game is over.
             end_of_game = True
@@ -49,5 +48,8 @@ while not end_of_game: #creating a condition: until the game is not finished, do
     if "_" not in display: # if no more spaces, the game is over and you won. 
         end_of_game = True
         print("You win.") 
+
+    from hangman_art import stages # import the logo and stages images from hangman_art.py
+    print(stages[lives])
 
    
