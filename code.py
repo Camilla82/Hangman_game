@@ -1,3 +1,4 @@
+from replit import clear
 import random
 
 from hangman_words import word_list # import the word_list from hangman_words.py 
@@ -21,6 +22,9 @@ for _ in range(word_length):
 
 while not end_of_game: #creating a condition: until the game is not finished, do this. 
     guess = input("Guess a letter: ").lower()  # question to the player
+
+    clear() 
+    
     #If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess is display:
       print(f"You have already guessed {guess}")
@@ -51,5 +55,3 @@ while not end_of_game: #creating a condition: until the game is not finished, do
 
     from hangman_art import stages # import the logo and stages images from hangman_art.py
     print(stages[lives])
-
-   
