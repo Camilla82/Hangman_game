@@ -62,7 +62,7 @@ stages = ['''
  
 import random
 from hangman_words import word_list # import the word_list from hangman_words.py 
-from hangman_art import logo, stages
+from hangman_art import logo, stages # import the logo and stages images from hangman_art.py
 
 end_of_game = False
 
@@ -84,7 +84,11 @@ for _ in range(word_length):
 
 while not end_of_game: #creating a condition: until the game is not finished, do this. 
     guess = input("Guess a letter: ").lower()  # question to the player
+    #If the user has entered a letter they've already guessed, print the letter and let them know.
+    if guess is display:
+      print(f"You have already guessed {guess}")
 
+  
     #Check guessed letter
     for position in range(word_length): #looping through each letter
         letter = chosen_word[position]  # 
@@ -92,10 +96,9 @@ while not end_of_game: #creating a condition: until the game is not finished, do
         if letter == guess: # if the choosen letter is equal to the looped letter
             display[position] = letter # substitute the choosen letter to the appropriate place in the display list. 
 
-    #TODO-2: - If guess is not a letter in the chosen_word,
-    #Then reduce 'lives' by 1. 
     #If lives goes down to 0 then the game should stop and it should print "You lose."
     if guess not in chosen_word: 
+        print(f"You guessed {guess}, that is not in the word. You lose a life.)
         lives -= 1 # if the guessed letter is not in the choosen word, reduce lives of 1. 
         if lives == 0: # if lives = 0, the game is over.
             end_of_game = True
@@ -109,5 +112,4 @@ while not end_of_game: #creating a condition: until the game is not finished, do
         end_of_game = True
         print("You win.") 
 
-    #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
-    print(stages[lives]) # This line prints the chosen ASCII art from the stages list based on the current number of lives.
+   
