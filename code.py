@@ -1,4 +1,4 @@
-#Step 4
+
 
 import random
 
@@ -59,8 +59,14 @@ stages = ['''
 =========
 ''']
 
-end_of_game = False 
-word_list = ["ardvark", "baboon", "camel"]
+ 
+import random
+from hangman_words import word_list # import the word_list from hangman_words.py 
+from hangman_art import logo, stages
+
+end_of_game = False
+
+print(logo)
 chosen_word = random.choice(word_list) #This line selects a random word from the word_list
 word_length = len(chosen_word) #This line calculates the length of the chosen word and stores it in the variable word_length.
 
